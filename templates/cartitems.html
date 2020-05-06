@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block title %} Your Cart {% endblock title %}
+{% load static %}
+{% block body %}
+<section id="shopcart" class="faq">
+<div class="container mt-3">
+    <div class="section-title" data-aos="zoom-out">
+      <h2>Cart</h2>
+      <p>Your Cart</p>
+    </div>
+	<div class="card border-success mb-3" data-aos="zoom-out">
+		<h5 class="card-header border-success mb-3">Cart for your items in my shopping cart !</h5>
+		<div class="card-body border-success">
+			<p class="card-text" id="setItemsToCart">
+				
+			</p>
+		</div>
+	</div>
+</div>
+</section>
+{% endblock body %}
+{% block js %}
+<script>
+
+  if (localStorage.getItem('cart') == null) {
+    var cart = {};
+  }
+  else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+  }
+  {% comment %} console.log(cart); {% endcomment %}
+  
+  updatePopover(cart);
+function updatePopover(cart){
+	var popStr = "";
+    popStr = popStr + "<div class='mx-2 my-2'><ul class='list-group'>";
+
+    var i = 1;
+   // for (var item in cart) {
+     // console.log(item);
+	//}
+  let items = Object.values(cart);
+  var new_item = 0;
+  var sr_no = 1
+  //console.log(items.length);
+
+  for (var item in items){
+      popStr = popStr + '<li class="list-group-item d-flex justify-content-between align-items-center"><b>' + sr_no + '. ' ;
+      popStr = popStr + items[new_item][1] + '</b><span class="badge badge-primary badge-pill" style="background-color:#18D26E;">' + items[new_item][0] + '</span></li>';
+      
+  new_item = new_item + 1;
+  sr_no = sr_no + 1;
+  }
+	popStr = popStr + "</ul></div> <center><a href='/checkout'><button class='btn btn-success' id='checkout'>Checkout</button></a> <button class='btn btn-danger' onclick='clearCart()' id='clearcart'>Clear Cart</button></center>";
+// 	 function removeTags(str) {
+//       if ((str===null) || (str==='')){
+// 		return false;
+// 	  }
+//       else{
+// 		str = str.toString();
+// 		new_str = str.replace( /(<([^>]+)>)/ig, '');
+// 		return new_str;
+// 	  }
+//    }
+//    popStr = removeTags(popStr)
+
+	// alert(popStr);
+	document.getElementById('setItemsToCart').innerHTML = popStr;
+}
+updateCart(cart);
+  function updateCart(cart) {
+    var sum = 0;
+    for (var item in cart) {
+      sum = sum + cart[item][0];
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById('cart').innerHTML = sum;
+
+  }
+  function clearCart() {
+     cart = JSON.parse(localStorage.getItem('cart'));
+     for (var item in cart) {
+      document.getElementById('setItemsToCart').innerHTML = '';
+    }
+   localStorage.clear();
+    cart = {};
+    updateCart(cart);
+  }
+
+</script>
+{% endblock js %}

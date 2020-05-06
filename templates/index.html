@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+	{% block title %} Home {% endblock title %}
+  {% block body %}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <h2 class="animated fadeInDown">Welcome to <span>BigDukaan</span></h2>
+          <p class="animated fadeInUp">BigDukaan.in , is an Indian electronic commerce company based in Nashik, India. BigDukaan.in , is significantly dominant in the sale of apparel (a position that was bolstered by its acquisitions of Myntra and Jabong. BigDukaan provides sale of electronics like mobile phones,etc .</p>
+          <a href="/store" class="btn-get-started animated fadeInUp scrollto">Go To Store</a>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="carousel-container">
+          <h2 class="animated fadeInDown">We have Special offers for you !!!</h2>
+          <p class="animated fadeInUp">Deal with us and get Awesome Offers and also join with us to get big discount. purchase above 1000 rs and get 50 rs Discount.</p>
+          <a href="/store" class="btn-get-started animated fadeInUp scrollto">Go To Store</a>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="carousel-container">
+          <h2 class="animated fadeInDown">Easy and Quick Services</h2>
+          <p class="animated fadeInUp">We provide the Special Service to our Customer, service within 48 hours, and delivery at Door step .</p>
+          <a href="/store" class="btn-get-started animated fadeInUp scrollto">Go To Store</a>
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+    <!-- ======= Cta Section ======= -->
+    <section id="" class="cta">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-out">
+          <div class="col-lg-9 text-center text-lg-left">
+            <h3>Shop with us</h3>
+            <p>We are open and taking orders daily, It's easier than ever to get what you want from Nashik. Shop multiple stores, checkout once & get fast, cheap Quick delivery to your door.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="/store" style="color:#fff;">Goto Store</a>
+          </div>
+		            <div class="col-lg-9 text-center text-lg-left">
+            <h3>Visit Our Blog</h3>
+            <p> Explore our mobile marketing blog to read our latest reports, case studies, and mobile marketing best practices around mobile messaging & Connect with world.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="javascript:void(0)" style="color:#fff;">Goto Blog</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+	<!-- End Cta Section -->
+{% endblock body %}
+{% block js %}
+<script>
+{% if msg%}
+    swal({
+            title: "Oops!",
+            text: "{{msg}}!",
+            type: "success",
+            icon: "warning",
+        }).then(function() {
+                window.location = "/login";
+            });
+{% endif %}
+{% if logoutmsg%}
+    swal({
+            title: "Oops!",
+            text: "{{logoutmsg}}!",
+            type: "success",
+            icon: "success",
+        }).then(function() {
+                window.location = "/";
+            });
+{% endif %}
+</script>
+{% endblock js %}

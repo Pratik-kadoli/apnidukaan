@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Paymentstatus - {% endblock %}
+
+{% block body %}
+<section id="faq" class="faq">
+<div class="container mt-3">
+    <div class="section-title" data-aos="zoom-out">
+      <h2>Order</h2>
+      <p>Your Order Status !</p>
+    </div>
+
+  {% comment %} {{response}} {% endcomment %}
+     <div class="col my-4" data-aos="zoom-out">
+          <h2>Payment status regarding your order id {{response.ORDERID}}</h2>
+          {% if response.RESPCODE == '01' %}
+            ORDER SUCCESS
+          {% else %}
+            Order Failure, Please Try Again for further process...
+          {% endif %}
+     
+     </div>
+     
+</div>
+</section>
+{% endblock %}
+
+{% block js %} 
+<script>
+jQuery(document).ready(function(){
+ 
+    jQuery(".hidethebutton").hide();
+
+});
+</script>
+{% endblock %}

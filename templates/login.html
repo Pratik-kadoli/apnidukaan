@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+	<title>SignIn | BigDukaan</title>
+	<link rel="stylesheet" type="text/css" href="{% static "assets/login-logout/css/style.css" %}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<img class="wave" src="{% static "assets/login-logout/img/wave.png" %}">
+	<div class="container">
+		<div class="img">
+			<img src="{% static "assets/login-logout/img/bg.svg" %}">
+		</div>
+		<div class="login-content">
+			<form action="/login/" method="post" name="LoginForm" onsubmit="return validateLoginForm()"> {% csrf_token %}
+				<h2 class="title">Sign In</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Username</h5>
+           		   		<input type="text" class="input" id="loginusername" name="loginusername">
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Password</h5>
+           		    	<input type="password" class="input" id="loginpassword" name="loginpassword">
+            	   </div>
+            	</div>
+              <a href="/register" style="text-align: center;">Create Account. </a>
+            	{% comment %} <a href="javascript:void(0)">Forgot Password?</a> {% endcomment %}
+            	<input type="submit" class="btn" value="Login">
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static "assets/login-logout/js/main.js" %}"></script>
+</body>
+</html>
+<script>
+{% if msg%}
+    swal({
+            title: "Oops!",
+            text: "{{msg}}!",
+            type: "success",
+            icon: "error",
+        }).then(function() {
+                window.location = "/login";
+            });
+{% endif %}
+{% if successmsg%}
+    swal({
+            title: "Oops!",
+            text: "{{successmsg}}!",
+            type: "success",
+            icon: "success",
+        }).then(function() {
+                window.location = "/";
+            });
+{% endif %}
+</script>

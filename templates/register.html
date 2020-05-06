@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+	<title>SignUp | BigDukaan</title>
+	<link rel="stylesheet" type="text/css" href="{% static "assets/login-logout/css/style.css" %}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<img class="wave" src="{% static "assets/login-logout/img/wave.png" %}">
+	<div class="container">
+		<div class="img">
+			<img src="{% static "assets/login-logout/img/bg.svg" %}">
+		</div>
+		<div class="login-content">
+			<form action="/register/" method="post" name="signupForm" onsubmit="return validatesignupForm()"> {% csrf_token %}
+				<h2 class="title">Sign Up</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Username</h5>
+           		   		<input type="text" class="input" id="username" name="username">
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-at"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Email</h5>
+           		    	<input type="text" class="input" id="signupemail" name="signupemail">
+            	   </div>
+            	</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Password</h5>
+           		    	<input type="password" class="input" id="pass1" name="pass1">
+            	   </div>
+            	</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Confirm Password</h5>
+           		    	<input type="password" class="input" id="pass2" name="pass2">
+            	   </div>
+            	</div>
+            	<a href="/login" style="text-align: center;">already have an account? Login</a>
+            	<input type="submit" class="btn" value="Register">
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static "assets/login-logout/js/main.js" %}"></script>
+</body>
+</html>
+<script>
+{% if msg%}
+    swal({
+            title: "Oops!",
+            text: "{{msg}}!",
+            type: "success",
+			icon: "error",
+        }).then(function() {
+                window.location = "/register";
+            });
+{% endif %}
+{% if successmsg%}
+    swal({
+            title: "Oops!",
+            text: "{{successmsg}}!",
+            type: "success",
+            icon: "success",
+        }).then(function() {
+                window.location = "/";
+            });
+{% endif %}
+</script>
