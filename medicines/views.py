@@ -11,7 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from PayTm import Checksum
 
 
-MERCHANT_KEY = '_UdKStzYXAvtmggq';
+MERCHANT_KEY = 'please_enter_your_merchant_key';
 
 # Create your views here.
 
@@ -140,7 +140,7 @@ def checkout(request):
         # Request Paytm to transfer the amount to your account after payment by user
         param_dict = {
             
-            'MID':'fezdCq12654386461620',
+            'MID':'please_enter_your_merchant_id',
             'ORDER_ID': str(order.order_id),
             'TXN_AMOUNT': str(amount),
             'CUST_ID': email,
